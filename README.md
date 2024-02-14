@@ -1,10 +1,10 @@
-# Type Nepali Chrome Extension ⌨️✨
+# Type Nepali Browser Extension ⌨️✨
 
 <p align="center">
 <img src="img/icons//icon-128.png" />
  </p>
 <p style="text-align: center;">
-Type Nepali is a chrome extension that gives your browser the power to type in Nepali.
+Type Nepali is a browser extension that gives your browser the power to type in Nepali.
 </p>
 
 ### Example
@@ -18,11 +18,10 @@ Type Nepali is a chrome extension that gives your browser the power to type in N
 - Download or clone this repo on your machine
 
 ```bash
-git clone https://github.com/AbhishekTimalsina/Type-Nepali.git
+git clone https://github.com/diggajupadhyay/Type-Nepali.git
 ```
 
-- Open Chrome and click the Extensions icon
-- Select 'Manage Extensions'
-- Enable developer mode from the top right corner
-- Click "Load unpacked" and select the extension folder
-- Thank me later.
+- Open Firefox and navigate to the Extensions or Add-ons section
+- Enable developer mode, if required
+- Load the unpacked extension by selecting the extension folder
+- Enjoy typing in Nepali!
