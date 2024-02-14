@@ -1,7 +1,12 @@
 let btn = document.querySelector("button");
 let translateState;
 
-chrome.storage.sync.get(["translateText"]).then((obj) => {
+// Use browser instead of chrome and check for compatibility
+const storage = (typeof browser !== "undefined" ? browser : chrome).storage;
+const tabs = (typeof browser !== "undefined" ? browser : chrome).tabs;
+const runtime = (typeof browser !== "undefined" ? browser : chrome).runtime;
+
+storage.sync.get(["translateText"]).then((obj) => {
   translateState = obj.translateText;
   CHANGE_BUTTON_TEXT(obj.translateText);
 });
@@ -9,7 +14,6 @@ chrome.storage.sync.get(["translateText"]).then((obj) => {
 btn.addEventListener("click", function () {
   let btnTxtContent = btn.textContent;
   if (btnTxtContent === "On") {
-    // if (translateState) {
     TOGGLE_TRANSLATE_VALUE(false);
     CHANGE_BUTTON_TEXT(false);
   } else {
@@ -18,19 +22,22 @@ btn.addEventListener("click", function () {
   }
 });
 
-function TOGGLE_TRANSLATE_VALUE(boolean) {
-  chrome.tabs.query({}, function (tabs) {
-    tabs.forEach(async (tab) => {
+async function TOGGLE_TRANSLATE_VALUE(boolean) {
+  try {
+    const tabsQuery = await tabs.query({});
+    tabsQuery.forEach(async (tab) => {
       console.log(tab);
-      // if the tab is a chrome url return
-      const pattern = /^chrome\:\/\/.*/;
+      // if the tab is a chrome or about url return
+      const pattern = /^(chrome|about)\:\/\/.*/;
       if (pattern.test(tab.url)) return;
 
-      await chrome.tabs.sendMessage(tab.id, {
+      await tabs.sendMessage(tab.id, {
         translate: boolean,
       });
     });
-  });
+  } catch (error) {
+    console.error("Error toggling translate value:", error);
+  }
 }
 
 function CHANGE_BUTTON_TEXT(boolean) {
@@ -43,6 +50,6 @@ function CHANGE_BUTTON_TEXT(boolean) {
   }
 }
 
-chrome.runtime.onMessage.addListener(function (request) {
+runtime.onMessage.addListener(function (request) {
   CHANGE_BUTTON_TEXT(request.translate);
 });

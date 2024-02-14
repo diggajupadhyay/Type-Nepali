@@ -1,34 +1,40 @@
 {
-  "manifest_version": 3,
-  "name": "Type Nepali",
-  "version": "1.0.0",
-  "description": "Type in Nepali.",
+  "manifest_version": 2,
+  "name": "Nepali Typing Extension",
+  "version": "1.0",
+  "description": "A Firefox extension to help with Nepali typing.",
   "icons": {
-    "16": "img/icons/icon-16.png",
-    "32": "img/icons/icon-32.png",
     "48": "img/icons/icon-48.png",
-    "128": "img/icons/icon-128.png"
+    "96": "img/icons/icon-96.png"
   },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "<all_urls>"
+  ],
   "background": {
-    "service_worker": "scripts/background.js"
+    "scripts": ["scripts/background.js"],
+    "persistent": false
   },
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "permissions": ["tabs", "storage"],
   "content_scripts": [
     {
-      "js": ["scripts/content.js"],
       "matches": ["<all_urls>"],
-      "run_at": "document_start"
+      "js": ["scripts/content.js"]
     }
   ],
-  "commands": {
-    "Toggle-Translation": {
-      "suggested_key": "Ctrl+Shift+Y",
-      "description": "Toggle the translation from On to Off or Off to On."
-    }
+  "browser_action": {
+    "default_icon": "img/icons/icon-48.png",
+    "default_popup": "popup.html",
+    "default_title": "Toggle Nepali Typing"
   },
-
-  "host_permissions": ["<all_urls>"]
+  "commands": {
+    "toggle-feature": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Toggle Nepali Typing"
+    }
+  }
 }
