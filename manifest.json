@@ -36,5 +36,10 @@
       },
       "description": "Toggle Nepali Typing"
     }
+  },
+  "applications": {
+    "gecko": {
+      "id": "{4062a83e-86b0-4f11-b542-47d1f31afd73}"
+    }
   }
 }

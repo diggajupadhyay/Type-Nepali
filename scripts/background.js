@@ -1,23 +1,21 @@
 browser.commands.onCommand.addListener((command) => {
-  // Only handle the specific command you want (replace with your command name)
   if (command === "toggle-feature") {
     browser.tabs.query({}).then((tabs) => {
-      tabs.forEach(async (tab) => {
-        // If you don't need internal URL filtering, remove this:
+      for (let tab of tabs) {
         const pattern = /^(chrome|about)\:\/\/.*/;
-        if (pattern.test(tab.url)) return;
+        if (pattern.test(tab.url)) continue;
 
-        let boolean = await getCurrentTranslationState();
-
-        await browser.tabs.sendMessage(tab.id, {
-          translate: !boolean,
+        getCurrentTranslationState().then(boolean => {
+          browser.tabs.sendMessage(tab.id, { translate: !boolean }).catch(error => {
+            console.error("Error sending message to tab:", error);
+          });
         });
-      });
+      }
     });
   }
 });
 
 async function getCurrentTranslationState() {
   let object = await browser.storage.sync.get(["translateText"]);
-  return object.translateText;
+  return object.translateText || false;
 }

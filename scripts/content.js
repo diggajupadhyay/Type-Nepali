@@ -1,7 +1,5 @@
 let isSpacePressed = false;
 let observer;
-// promiseResolver is assigned the resolve value of the promise below and that is then used by the input handler function
-// to resolve the promsie, this is to ensure that the mutation observer callback only runs after the isSpacePressed is set to true
 let promiseResolver = null;
 let currentTextfield = null;
 
@@ -32,9 +30,7 @@ async function TRANSLATION_HANDLER(e) {
   }
 }
 
-// let observer = new MutationObserver(callback);
 async function callback(mutationRecord) {
-  // create a new Promise when called and assign resolve value to promiseResolver variable
   function WAIT_FOR_IS_SPACE_PRESSED() {
     return new Promise((resolve) => {
       promiseResolver = resolve;
@@ -58,8 +54,6 @@ async function HANDLE_TRANSLATION_FOR_OTHER_FIELDS(e) {
   });
   if (e.keyCode === 32) {
     isSpacePressed = true;
-    // envoking the promiseResolver function after the isSpacePressed is set to true so that the mutation observer callback
-    // ony runs after this
     promiseResolver && promiseResolver(true);
   }
 
@@ -70,7 +64,6 @@ async function TRANSLATE_FOR_OTHER(textfield) {
   if (!textfield) return;
   if (!isSpacePressed) return;
 
-  // if it is not a text node return
   if (!(textfield.nodeType === Node.TEXT_NODE)) return;
   let textFieldValue = textfield.textContent;
   let lines = textFieldValue.split("\n");
@@ -93,7 +86,6 @@ async function TRANSLATE_FOR_OTHER(textfield) {
   MOVE_CARET_TO_END(textfield);
 }
 
-// CALL THE API TO TRANSLATE WORD, RETURNS THE TRANSLATED WORD
 async function TRANSLATION_API_CALL(wordToTranslate) {
   let fetchUrl = `https://www.google.com/inputtools/request?text=${wordToTranslate}&ime=transliteration_en_ne&num=1`;
 
@@ -107,7 +99,6 @@ async function TRANSLATION_API_CALL(wordToTranslate) {
   return translatedWord;
 }
 
-// find the text node recursively
 function FIND_TEXT_NODE(node) {
   if (!node) return;
   if (node.nodeType === Node.TEXT_NODE) {
@@ -117,7 +108,6 @@ function FIND_TEXT_NODE(node) {
   }
 }
 
-// MOVES THE CURSOR POSITION TO END
 function MOVE_CARET_TO_END(elem) {
   if (!elem) return;
   let selection = window.getSelection();
@@ -135,14 +125,11 @@ chrome.runtime.onMessage.addListener(function (request) {
     window.addEventListener("keydown", TRANSLATION_HANDLER);
     observer = new MutationObserver(callback);
     promiseResolver = currentTextfield = null;
-    //  currentTextfield = null;
   } else {
     window.removeEventListener("keydown", TRANSLATION_HANDLER);
     observer.disconnect();
   }
-  chrome.storage.sync.set({
-    translateText: request.translate,
-  });
+  chrome.storage.sync.set({ translateText: request.translate });
 });
 
 chrome.storage.sync.get(["translateText"]).then((obj) => {
