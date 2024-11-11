@@ -5,12 +5,15 @@ const storage = (typeof browser !== "undefined" ? browser : chrome).storage;
 const tabs = (typeof browser !== "undefined" ? browser : chrome).tabs;
 const runtime = (typeof browser !== "undefined" ? browser : chrome).runtime;
 
-storage.sync.get(["translateText"]).then((obj) => {
-  translateState = obj.translateText || false;
-  changeButtonText(translateState);
-}).catch((error) => {
-  console.error("Error fetching translation state:", error);
-});
+(async () => {
+  try {
+    const obj = await storage.sync.get(["translateText"]);
+    translateState = obj.translateText || false;
+    changeButtonText(translateState);
+  } catch (error) {
+    console.error("Error fetching translation state:", error);
+  }
+})();
 
 btn.addEventListener("click", function () {
   let newState = btn.textContent === "On" ? false : true;
