@@ -33,9 +33,9 @@
     "toggle-feature": {
       "suggested_key": {
         "default": "Ctrl+Alt+N",
-        "mac": "MacCtrl+Option+N"
+        "mac": "Ctrl+Option+N"
       },
-      "description": "Toggle Nepali Typing (Ctrl+Alt+N)"
+      "description": "Toggle Nepali Typing (Ctrl+Alt+N or Ctrl+Option+N on Mac)"
     }
   },
   "browser_specific_settings": {
