@@ -1,21 +1,22 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Nepali Typing Extension",
-  "version": "1.1",
+  "version": "1.2",
   "description": "A Firefox extension to help with Nepali typing.",
   "icons": {
     "48": "img/icons/icon-48.png",
     "128": "img/icons/icon-128.png"
   },
   "permissions": [
-    "activeTab",
     "storage",
-    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
     "<all_urls>"
   ],
   "background": {
-    "scripts": ["scripts/background.js"],
-    "persistent": false
+    "scripts": ["scripts/background.js"]
   },
   "content_scripts": [
     {
@@ -23,7 +24,7 @@
       "js": ["scripts/content.js"]
     }
   ],
-  "browser_action": {
+  "action": {
     "default_icon": "img/icons/icon-48.png",
     "default_popup": "popup.html",
     "default_title": "Toggle Nepali Typing"
@@ -37,7 +38,7 @@
       "description": "Toggle Nepali Typing"
     }
   },
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "{4062a83e-86b0-4f11-b542-47d1f31afd73}"
     }
