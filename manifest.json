@@ -33,7 +33,7 @@
     "toggle-feature": {
       "suggested_key": {
         "default": "Ctrl+Alt+N",
-        "mac": "Command+Option+N"
+        "mac": "MacCtrl+Option+N"
       },
       "description": "Toggle Nepali Typing (Ctrl+Alt+N)"
     }
