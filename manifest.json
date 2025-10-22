@@ -32,10 +32,10 @@
   "commands": {
     "toggle-feature": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Y",
-        "mac": "Command+Shift+Y"
+        "default": "Ctrl+Alt+N",
+        "mac": "Command+Option+N"
       },
-      "description": "Toggle Nepali Typing"
+      "description": "Toggle Nepali Typing (Ctrl+Alt+N)"
     }
   },
   "browser_specific_settings": {

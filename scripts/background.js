@@ -1,14 +1,17 @@
-browser.commands.onCommand.addListener((command) => {
+browser.commands.onCommand.addListener(async (command) => {
   if (command === "toggle-feature") {
+    const currentState = await getCurrentTranslationState();
+    const newState = !currentState;
+    
+    await browser.storage.sync.set({ translateText: newState });
+    
     browser.tabs.query({}).then((tabs) => {
       for (let tab of tabs) {
-        const pattern = /^(chrome|about)\:\/\/.*/;
+        const pattern = /^(chrome|about|moz-extension)\:\/\/.*/;
         if (pattern.test(tab.url)) continue;
 
-        getCurrentTranslationState().then(boolean => {
-          browser.tabs.sendMessage(tab.id, { translate: !boolean }).catch(error => {
-            console.error("Error sending message to tab:", error);
-          });
+        browser.tabs.sendMessage(tab.id, { translate: newState }).catch(error => {
+          // Silently fail if tab doesn't have content script loaded
         });
       }
     });
