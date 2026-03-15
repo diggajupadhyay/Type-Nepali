@@ -1,1 +1,25 @@
+# Build outputs
 *.zip
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# IDE and editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Qwen
+.qwen/

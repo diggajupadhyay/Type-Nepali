@@ -6,9 +6,91 @@ body {
   text-align: center;
 }
 
+/* ==========================================================================
+   Accessibility - Skip Links & Focus States
+   ========================================================================== */
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2d75db;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0 0 4px 4px;
+  z-index: 10000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Global focus styles */
+*:focus {
+  outline: 3px solid #2d75db;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid #2d75db;
+  outline-offset: 2px;
+}
+
+/* Visually hidden utility class */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  button,
+  .btn-primary,
+  .btn-secondary {
+    border: 2px solid currentColor;
+  }
+}
+
 h1 {
   color: #2d75db;
   margin-bottom: 10px;
+}
+
+h2 {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #2d75db;
+  padding-bottom: 6px;
 }
 
 p {
@@ -26,12 +108,365 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  min-height: 44px; /* Touch target size */
 }
 
 button.off {
   background-color: #39639c;
 }
+
 button:hover {
   border: 1px solid white;
   background-color: #002a66;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Status indicator colors */
+.status-on {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.status-off {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Settings Page Styles */
+.settings-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.setting-group {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.setting-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.setting-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.setting-item label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.setting-item input[type="checkbox"] {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.setting-item select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.setting-item select:hover {
+  border-color: #2d75db;
+}
+
+.setting-description {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.shortcut-display {
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 14px;
+  text-align: center;
+  margin: 8px 0;
+}
+
+kbd {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  color: #333;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 3px 8px;
+  margin: 0 4px;
+}
+
+.stats-container {
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  color: #555;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: #2d75db;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  margin-bottom: 8px;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.btn-primary {
+  background-color: #28a745;
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+}
+
+.save-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 16px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.save-bar .btn-primary {
+  width: auto;
+  min-width: 150px;
+}
+
+.save-message {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.save-message.success {
+  color: #28a745;
+}
+
+.save-message.error {
+  color: #dc3545;
+}
+
+.about-info {
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.about-info p {
+  margin: 8px 0;
+  color: #555;
+}
+
+/* Help Page Styles */
+ul, ol {
+  text-align: left;
+  color: #555;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* Examples table */
+.examples-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.examples-table th,
+.examples-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.examples-table th {
+  background: #2d75db;
+  color: white;
+  font-weight: bold;
+}
+
+.examples-table tr:hover {
+  background: #f5f5f5;
+}
+
+/* Shortcuts definition list */
+.shortcuts-list {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.shortcuts-list dt {
+  font-weight: bold;
+  color: #333;
+  margin-top: 12px;
+}
+
+.shortcuts-list dt:first-child {
+  margin-top: 0;
+}
+
+.shortcuts-list dd {
+  margin-left: 0;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* Help navigation */
+.help-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: center;
+}
+
+.help-nav .btn-primary,
+.help-nav .btn-secondary {
+  width: auto;
+  padding: 10px 20px;
+}
+
+/* Footer styles */
+footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+  color: #666;
+  font-size: 14px;
+}
+
+footer a {
+  color: #2d75db;
+}
+
+/* Instruction text */
+.instruction {
+  font-size: 13px;
+  color: #666;
+  margin: 16px 0;
+}
+
+.instruction kbd {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 11px;
+}
+
+/* Version text */
+.version {
+  font-size: 12px;
+  color: #999;
+  margin-top: 16px;
+}
+
+/* Links navigation in popup */
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.links a {
+  color: #2d75db;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.links a:hover {
+  background: #e8eef9;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .settings-container {
+    padding: 12px;
+  }
+
+  .save-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .save-bar .btn-primary {
+    width: 100%;
+  }
+  
+  .help-nav {
+    flex-direction: column;
+  }
+  
+  .help-nav .btn-primary,
+  .help-nav .btn-secondary {
+    width: 100%;
+  }
 }

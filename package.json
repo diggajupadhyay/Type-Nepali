@@ -1,0 +1,45 @@
+{
+  "name": "type-nepali",
+  "version": "1.5.0",
+  "description": "A browser extension to help with Nepali typing - Real-time English to Nepali transliteration",
+  "author": "Jay Nepal",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diggajupadhyay/Type-Nepali.git"
+  },
+  "keywords": [
+    "nepali",
+    "typing",
+    "transliteration",
+    "browser-extension",
+    "firefox",
+    "chrome"
+  ],
+  "scripts": {
+    "lint": "eslint scripts/**/*.js",
+    "lint:fix": "eslint scripts/**/*.js --fix",
+    "format": "prettier --write \"**/*.{js,html,css,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,html,css,json,md}\"",
+    "build": "node scripts/build.js",
+    "build:watch": "node scripts/build.js --watch",
+    "dev": "npm run build:watch",
+    "test": "echo \"Tests coming soon\" && exit 0",
+    "validate:manifest": "node scripts/validate-manifest.js",
+    "zip": "npm run build && node scripts/zip-extension.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "web-ext": "^7.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "firefox >= 100",
+    "chrome >= 88"
+  ]
+}

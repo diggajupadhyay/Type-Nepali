@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Toggle Nepali typing on/off for your browser">
+  <title>Nepali Typing Extension</title>
   <link rel="stylesheet" href="popup-styles.css">
 </head>
-
-<body>
-  <h1>Nepali Typing is currently <span id="span-btn"></span></h1>
-  <button id="btn">On</button>
-  <p>Click the button to toggle Nepali Typing</p>
-  <div class="links">
-    <a href="help.html" target="_blank">Help</a>
-    <a href="settings.html" target="_blank">Settings</a>
-  </div>
+<body role="application" aria-label="Nepali Typing Extension Popup">
+  <header>
+    <h1 id="main-heading">Nepali Typing is currently <span id="span-btn" class="status-indicator" aria-live="polite">On</span></h1>
+  </header>
+  
+  <main>
+    <button 
+      id="btn" 
+      type="button"
+      role="switch"
+      aria-pressed="true"
+      aria-labelledby="main-heading"
+      tabindex="0">
+      On
+    </button>
+    
+    <p class="instruction">Click the button or press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>N</kbd> to toggle</p>
+  </main>
+  
+  <nav aria-label="Extension pages" class="links">
+    <a href="help.html" target="_blank" rel="noopener" tabindex="0">Help</a>
+    <a href="settings.html" target="_blank" rel="noopener" tabindex="0">Settings</a>
+  </nav>
+  
+  <footer>
+    <p class="version">Version 1.5.0</p>
+  </footer>
+  
   <script src="./scripts/popup.js"></script>
 </body>
-
 </html>
