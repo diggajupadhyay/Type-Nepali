@@ -9,16 +9,16 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  
-  <header role="banner">
-    <h1 id="page-title">Settings</h1>
+
+  <header class="settings-header" role="banner">
+    <h1 id="page-title">⚙️ Settings</h1>
   </header>
-  
+
   <main id="main-content" role="main" class="settings-container">
-    
+
     <section class="setting-group" aria-labelledby="typing-prefs-heading">
-      <h2 id="typing-prefs-heading">Typing Preferences</h2>
-      
+      <h2 id="typing-prefs-heading">✍️ Typing Preferences</h2>
+
       <div class="setting-item">
         <label for="autoConvert">
           <input type="checkbox" id="autoConvert" name="autoConvert" checked>
@@ -26,7 +26,7 @@
         </label>
         <p class="setting-description" id="autoConvert-desc">Automatically convert English words to Nepali when you press space</p>
       </div>
-      
+
       <div class="setting-item">
         <label for="convertPunctuation">
           <input type="checkbox" id="convertPunctuation" name="convertPunctuation" checked>
@@ -35,10 +35,10 @@
         <p class="setting-description" id="convertPunctuation-desc">Replace "." with "।" (Nepali full stop)</p>
       </div>
     </section>
-    
+
     <section class="setting-group" aria-labelledby="appearance-heading">
-      <h2 id="appearance-heading">Appearance</h2>
-      
+      <h2 id="appearance-heading">🎨 Appearance</h2>
+
       <div class="setting-item">
         <label for="fontSize">Nepali text size</label>
         <select id="fontSize" name="fontSize" aria-describedby="fontSize-desc">
@@ -49,7 +49,7 @@
         </select>
         <p class="setting-description" id="fontSize-desc">Adjust the font size for Nepali text</p>
       </div>
-      
+
       <div class="setting-item">
         <label for="fontFamily">Font family</label>
         <select id="fontFamily" name="fontFamily" aria-describedby="fontFamily-desc">
@@ -61,10 +61,10 @@
         <p class="setting-description" id="fontFamily-desc">Choose the font style for Nepali text</p>
       </div>
     </section>
-    
+
     <section class="setting-group" aria-labelledby="shortcut-heading">
-      <h2 id="shortcut-heading">Keyboard Shortcut</h2>
-      
+      <h2 id="shortcut-heading">⌨️ Keyboard Shortcut</h2>
+
       <div class="setting-item">
         <label>Toggle shortcut</label>
         <div class="shortcut-display" role="group" aria-label="Keyboard shortcut">
@@ -74,10 +74,10 @@
         <p class="setting-description">Press this combination to quickly enable/disable Nepali typing</p>
       </div>
     </section>
-    
+
     <section class="setting-group" aria-labelledby="data-heading">
-      <h2 id="data-heading">Data Management</h2>
-      
+      <h2 id="data-heading">📊 Data Management</h2>
+
       <div class="setting-item">
         <label>Extension Statistics</label>
         <div class="stats-container" role="group" aria-label="Translation statistics">
@@ -91,39 +91,39 @@
           </div>
         </div>
       </div>
-      
+
       <div class="setting-item">
         <button type="button" id="resetStats" class="btn-secondary" aria-describedby="resetStats-desc">
-          Reset Statistics
+          🗑️ Reset Statistics
         </button>
         <p class="setting-description" id="resetStats-desc">Clear all translation statistics</p>
-        
+
         <button type="button" id="resetSettings" class="btn-secondary" aria-describedby="resetSettings-desc">
-          Reset All Settings
+          🔄 Reset All Settings
         </button>
         <p class="setting-description" id="resetSettings-desc">Restore default settings</p>
       </div>
     </section>
-    
+
     <section class="setting-group" aria-labelledby="about-heading">
-      <h2 id="about-heading">About</h2>
+      <h2 id="about-heading">ℹ️ About</h2>
       <div class="about-info">
         <p><strong>Version:</strong> 1.5.0</p>
         <p><strong>Developer:</strong> Jay Nepal</p>
         <p>This extension uses Google's Input Tools API for transliteration.</p>
       </div>
     </section>
-    
+
   </main>
-  
+
   <div class="save-bar" role="region" aria-label="Save actions">
     <button type="button" id="saveSettings" class="btn-primary" aria-describedby="saveHint">
-      Save Settings
+      💾 Save Settings
     </button>
     <span id="saveHint" class="visually-hidden">Press Ctrl+S to save quickly</span>
     <span id="saveMessage" class="save-message" role="status" aria-live="polite"></span>
   </div>
-  
+
   <script src="./scripts/settings.js"></script>
 </body>
 </html>

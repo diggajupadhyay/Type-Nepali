@@ -8,33 +8,75 @@
   <link rel="stylesheet" href="popup-styles.css">
 </head>
 <body role="application" aria-label="Nepali Typing Extension Popup">
-  <header>
-    <h1 id="main-heading">Nepali Typing is currently <span id="span-btn" class="status-indicator" aria-live="polite">On</span></h1>
+  <a href="#btn" class="skip-link">Skip to toggle button</a>
+
+  <header class="popup-header">
+    <div class="logo-container">
+      <svg class="logo-icon" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="currentColor"/>
+        <text x="24" y="30" text-anchor="middle" fill="white" font-size="20" font-weight="bold">ने</text>
+      </svg>
+    </div>
+    <h1 id="main-heading" class="popup-title">
+      Nepali Typing
+    </h1>
+    <p class="status-text">
+      Status: <span id="span-btn" class="status-indicator status-on" aria-live="polite">On</span>
+    </p>
   </header>
-  
-  <main>
-    <button 
-      id="btn" 
+
+  <main class="popup-main">
+    <button
+      id="btn"
       type="button"
       role="switch"
       aria-pressed="true"
       aria-labelledby="main-heading"
-      tabindex="0">
-      On
+      tabindex="0"
+      class="toggle-btn">
+      <span class="btn-content">
+        <span class="btn-icon" aria-hidden="true">⌨️</span>
+        <span class="btn-text">On</span>
+      </span>
     </button>
-    
-    <p class="instruction">Click the button or press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>N</kbd> to toggle</p>
+
+    <div class="shortcut-hint">
+      <span class="hint-icon" aria-hidden="true">⚡</span>
+      <p class="instruction">
+        Press <kbd class="shortcut-key">Ctrl</kbd><kbd class="shortcut-key">Alt</kbd><kbd class="shortcut-key">N</kbd> to toggle
+      </p>
+    </div>
+
+    <div class="quick-stats">
+      <div class="stat-badge">
+        <span class="stat-icon" aria-hidden="true">📝</span>
+        <span class="stat-label">Words</span>
+        <span class="stat-value" id="quick-words">0</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-icon" aria-hidden="true">⚡</span>
+        <span class="stat-label">Cache</span>
+        <span class="stat-value" id="quick-cache">0</span>
+      </div>
+    </div>
   </main>
-  
+
   <nav aria-label="Extension pages" class="links">
-    <a href="help.html" target="_blank" rel="noopener" tabindex="0">Help</a>
-    <a href="settings.html" target="_blank" rel="noopener" tabindex="0">Settings</a>
+    <a href="help.html" target="_blank" rel="noopener" class="nav-link" tabindex="0">
+      <span class="nav-icon" aria-hidden="true">❓</span>
+      <span>Help</span>
+    </a>
+    <a href="settings.html" target="_blank" rel="noopener" class="nav-link" tabindex="0">
+      <span class="nav-icon" aria-hidden="true">⚙️</span>
+      <span>Settings</span>
+    </a>
   </nav>
-  
-  <footer>
+
+  <footer class="popup-footer">
     <p class="version">Version 1.5.0</p>
+    <p class="tagline">Made with ❤️ for Nepali community</p>
   </footer>
-  
+
   <script src="./scripts/popup.js"></script>
 </body>
 </html>
