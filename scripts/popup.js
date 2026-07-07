@@ -13,14 +13,11 @@ const browserAPI = (typeof browser !== 'undefined' && browser.runtime) ? browser
 const elements = {
   button: null,
   statusSpan: null,
-  quickWords: null,
-  quickCache: null,
   btnText: null
 };
 
 // State
 let isEnabled = false;
-let stats = { wordsTranslated: 0, cacheHits: 0 };
 
 /**
  * Initialize popup UI
@@ -29,8 +26,6 @@ async function init() {
   // Cache DOM elements
   elements.button = document.getElementById('btn');
   elements.statusSpan = document.getElementById('span-btn');
-  elements.quickWords = document.getElementById('quick-words');
-  elements.quickCache = document.getElementById('quick-cache');
   elements.btnText = elements.button?.querySelector('.btn-text');
 
   if (!elements.button) {
@@ -39,50 +34,11 @@ async function init() {
     return;
   }
 
-  // Load current state and stats
+  // Load current state
   await loadState();
-  await loadStats();
 
   // Setup event listeners
   elements.button.addEventListener('click', toggleState);
-
-  // Listen for state changes from other parts of extension
-  browserAPI.runtime.onMessage.addListener((request) => {
-    if (typeof request.translate === 'boolean') {
-      updateUI(request.translate);
-    }
-
-    return true;
-  });
-}
-
-/**
- * Load statistics from storage
- */
-async function loadStats() {
-  try {
-    const result = await browserAPI.storage.sync.get(['stats']);
-    
-    if (result.stats) {
-      stats = result.stats;
-    }
-    
-    updateStatsUI();
-  } catch (error) {
-    console.error('[Type-Nepali] Failed to load stats:', error);
-  }
-}
-
-/**
- * Update statistics display
- */
-function updateStatsUI() {
-  if (elements.quickWords) {
-    elements.quickWords.textContent = stats.wordsTranslated || 0;
-  }
-  if (elements.quickCache) {
-    elements.quickCache.textContent = stats.cacheHits || 0;
-  }
 }
 
 /**
@@ -159,7 +115,7 @@ function updateUI(enabled) {
   elements.button.classList.toggle('off', !enabled);
   
   // Update status span
-  elements.statusSpan.textContent = enabled ? 'On' : 'Off';
+  elements.statusSpan.textContent = enabled ? 'Active' : 'Inactive';
   elements.statusSpan.className = `status-indicator ${enabled ? 'status-on' : 'status-off'}`;
 
   // Update ARIA label

@@ -3,25 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Toggle Nepali typing on/off for your browser">
-  <title>Nepali Typing Extension</title>
+  <title>Type Nepal</title>
   <link rel="stylesheet" href="popup-styles.css">
 </head>
-<body role="application" aria-label="Nepali Typing Extension Popup">
-  <a href="#btn" class="skip-link">Skip to toggle button</a>
+
+<body role="application" aria-label="Type Nepal Extension">
 
   <header class="popup-header">
-    <div class="logo-container">
-      <svg class="logo-icon" viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="24" r="22" fill="currentColor"/>
-        <text x="24" y="30" text-anchor="middle" fill="white" font-size="20" font-weight="bold">ने</text>
-      </svg>
-    </div>
-    <h1 id="main-heading" class="popup-title">
-      Nepali Typing
+    <h1 class="popup-title">
+      Type Nepali
     </h1>
     <p class="status-text">
-      Status: <span id="span-btn" class="status-indicator status-on" aria-live="polite">On</span>
+      Status: <span id="span-btn" class="status-indicator status-on" aria-live="polite">Active</span>
     </p>
   </header>
 
@@ -40,37 +33,13 @@
       </span>
     </button>
 
-    <div class="shortcut-hint">
+    <div class="instruction-container">
       <span class="hint-icon" aria-hidden="true">⚡</span>
       <p class="instruction">
         Press <kbd class="shortcut-key">Ctrl</kbd><kbd class="shortcut-key">Alt</kbd><kbd class="shortcut-key">N</kbd> to toggle
       </p>
     </div>
-
-    <div class="quick-stats">
-      <div class="stat-badge">
-        <span class="stat-icon" aria-hidden="true">📝</span>
-        <span class="stat-label">Words</span>
-        <span class="stat-value" id="quick-words">0</span>
-      </div>
-      <div class="stat-badge">
-        <span class="stat-icon" aria-hidden="true">⚡</span>
-        <span class="stat-label">Cache</span>
-        <span class="stat-value" id="quick-cache">0</span>
-      </div>
-    </div>
   </main>
-
-  <nav aria-label="Extension pages" class="links">
-    <a href="help.html" target="_blank" rel="noopener" class="nav-link" tabindex="0">
-      <span class="nav-icon" aria-hidden="true">❓</span>
-      <span>Help</span>
-    </a>
-    <a href="settings.html" target="_blank" rel="noopener" class="nav-link" tabindex="0">
-      <span class="nav-icon" aria-hidden="true">⚙️</span>
-      <span>Settings</span>
-    </a>
-  </nav>
 
   <footer class="popup-footer">
     <p class="version">Version 1.5.0</p>
