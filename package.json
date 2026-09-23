@@ -1,7 +1,7 @@
 {
   "name": "type-nepali",
   "version": "1.5.1",
-  "description": "A browser extension to help with Nepali typing - Real-time English to Nepali transliteration",
+  "description": "Real-time English to Nepali transliteration browser extension",
   "author": "Jay Nepal",
   "license": "MIT",
   "repository": {
@@ -13,19 +13,16 @@
     "typing",
     "transliteration",
     "browser-extension",
-    "firefox",
-    "chrome"
+    "firefox"
   ],
   "scripts": {
     "build": "node scripts/build.js",
     "zip": "npm run build && node scripts/zip-extension.js"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+    "node": ">=18.0.0"
   },
   "browserslist": [
-    "firefox >= 100",
-    "chrome >= 88"
+    "firefox >= 100"
   ]
 }
