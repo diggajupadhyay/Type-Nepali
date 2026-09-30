@@ -1,7 +1,7 @@
 /**
  * Zip Extension for Distribution
  * Creates a zip file of the dist folder for publishing.
- * @version 1.5.1
+ * @version 1.6.0
  */
 
 'use strict';

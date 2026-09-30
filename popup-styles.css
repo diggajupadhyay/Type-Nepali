@@ -136,6 +136,47 @@ body {
   font-size: 18px;
 }
 
+/* Permission banner — shown when <all_urls> access has not been granted yet (Firefox MV3) */
+.permission-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  margin: 12px 12px 0;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius-lg);
+}
+
+.permission-text {
+  font-size: 12px;
+  color: #92400e;
+  text-align: center;
+  margin: 0;
+}
+
+.grant-btn {
+  width: 100%;
+  height: 36px;
+  background: #d97706;
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.grant-btn:hover {
+  background: #b45309;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Instruction */
 .instruction-container {
   display: flex;

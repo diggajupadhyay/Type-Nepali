@@ -1,7 +1,7 @@
 /**
  * Build Script for Type Nepali Extension
  * Copies files to dist folder and performs basic validation.
- * @version 1.5.1
+ * @version 1.6.0
  */
 
 'use strict';

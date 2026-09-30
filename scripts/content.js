@@ -1,7 +1,7 @@
 /**
  * Type Nepali Content Script
  * Real-time English to Nepali transliteration for input fields and contenteditable areas.
- * @version 1.5.1
+ * @version 1.6.0
  */
 
 'use strict';

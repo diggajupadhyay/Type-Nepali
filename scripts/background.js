@@ -1,7 +1,7 @@
 /**
  * Type Nepali Background Script
  * Handles keyboard shortcuts and global state management.
- * @version 1.5.1
+ * @version 1.6.0
  */
 
 'use strict';
