@@ -23,7 +23,7 @@ A browser extension that gives your browser the power to type in Nepali using En
 - **Real-time Transliteration**: Type in English and get Nepali text instantly
 - **Smart Caching**: 300+ common words translated instantly without API calls
 - **Works Everywhere**: Compatible with all websites and text input fields
-- **Keyboard Shortcut**: Toggle with `Ctrl+Alt+N` (Windows/Linux) or `Cmd+Alt+N` (Mac)
+- **Keyboard Shortcut**: Toggle with `Ctrl+Shift+Y` (Windows/Linux) or `Cmd+Shift+Y` (Mac)
 - **Offline Fallback**: Graceful handling when API is unavailable
 - **Accessible**: WCAG compliant with keyboard navigation support
 - **Privacy First**: No data collection, all processing happens locally or via Google API
@@ -72,8 +72,8 @@ A browser extension that gives your browser the power to type in Nepali using En
 
 | Platform | Shortcut |
 |----------|----------|
-| Windows/Linux | `Ctrl` + `Alt` + `N` |
-| Mac | `Cmd` + `Alt` + `N` |
+| Windows/Linux | `Ctrl` + `Shift` + `Y` |
+| Mac | `Cmd` + `Shift` + `Y` |
 
 ### Examples
 

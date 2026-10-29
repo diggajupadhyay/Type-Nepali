@@ -209,7 +209,7 @@ async function processTextInput(target) {
  * Replaces the last word before the cursor with its Nepali translation.
  * @param {Event} e
  */
-function handleContentEditable(e) {
+async function handleContentEditable(e) {
   e.preventDefault();
 
   const sel = window.getSelection();
@@ -229,7 +229,7 @@ function handleContentEditable(e) {
 
   if (!result) {return;}
 
-  const translatedWord = translateWord(result.word);
+  const translatedWord = await translateWord(result.word);
   const start = result.start;
   const end = start + result.word.length;
 
@@ -253,12 +253,14 @@ function handleContentEditable(e) {
  * @param {KeyboardEvent} e
  */
 async function handleKeydown(e) {
-  if (e.key !== ' ' || e.key === 'Enter') {return;}
+  if (e.key !== ' ') {return;}
 
   if (isTextInput(e.target)) {
+    e.preventDefault();
     await processTextInput(e.target);
   } else if (e.target.isContentEditable) {
-    handleContentEditable(e);
+    e.preventDefault();
+    await handleContentEditable(e);
   }
 }
 

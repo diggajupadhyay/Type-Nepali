@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Nepali Typing Extension",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "A Firefox extension to help with Nepali typing.",
   "icons": {
     "48": "img/icons/icon-48.png",
@@ -16,7 +16,7 @@
     "<all_urls>"
   ],
   "background": {
-    "scripts": ["scripts/background.js"]
+    "service_worker": "scripts/background.js"
   },
   "content_scripts": [
     {
@@ -32,10 +32,10 @@
   "commands": {
     "toggle-feature": {
       "suggested_key": {
-        "default": "Ctrl+Alt+N",
-        "mac": "Command+Alt+N"
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
       },
-      "description": "Toggle Nepali Typing (Ctrl+Alt+N or Command+Alt+N on Mac)"
+      "description": "Toggle Nepali Typing (Ctrl+Shift+Y or Command+Shift+Y on Mac)"
     }
   },
   "browser_specific_settings": {
